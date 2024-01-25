@@ -15,19 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 form.addEventListener("submit", (event) => {
     event.preventDefault()
-    if (userCache===undefined) {
+    if (userCache === undefined) {
         saveUser()
     } else {
         updateUser(userCache)
     }
-    
+
 })
 
 tbody.addEventListener('click', (event) => {
     if (event.target.classList.contains("btn-primary")) {
         userCache = event.target.getAttribute("data-id")
-        nameUser.value=event.target.parentElement.parentElement.getElementsByTagName('td')[0].textContent;
-        userAge.value=event.target.parentElement.parentElement.getElementsByTagName('td')[1].textContent;
+        nameUser.value = event.target.parentElement.parentElement.getElementsByTagName('td')[0].textContent;
+        userAge.value = event.target.parentElement.parentElement.getElementsByTagName('td')[1].textContent;
+    }
+
+    if (event.target.classList.contains("btn-danger")) {
+        let id = event.target.getAttribute("data-id")
+        deleteUser(id)
     }
 })
 
@@ -66,7 +71,7 @@ async function updateUser(id) {
         body: JSON.stringify(user)
     })
 
-    userCache=undefined
+    userCache = undefined
 }
 
 async function getUsers() {
@@ -94,7 +99,7 @@ function renderUsers(data) {
             <td>${element.age}</td>
             <td>
                 <button type="button" class="btn btn-primary" data-id="${element.id}">Edit</button>
-                <button type="button" class="btn btn-danger" onclick="eliminar('${element.id}')">Delete</button>
+                <button type="button" class="btn btn-danger" data-id="${element.id}">Delete</button>
             </td>
         </tr>
         `
