@@ -52,6 +52,7 @@ async function saveUser() {
         body: JSON.stringify(user)
     })
     form.reset()
+    form.classList.remove("was-validated");
     getUsers()
 }
 
