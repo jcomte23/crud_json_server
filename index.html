@@ -8,18 +8,18 @@
   <title>CRUD JWS</title>
 </head>
 
-<body class="container-fluid">
-  <header>
+<body>
+  <header class="container-fluid">
     <h1 class="text-center">Crud with Json Server</h1>
   </header>
-  <main class="px-5">
+  <main>
     <form id="form" method="post">
-      <div class="row py-3">
-        <div class="col-sm-12 col-md-6 form-floating">
+      <div class="row py-2">
+        <div class="col-xs-12 col-sm-6 col-md-6 form-floating">
           <input type="text" class="form-control" id="user-name" placeholder="User name">
           <label for="user-name">User name</label>
         </div>
-        <div class="col-sm-12 col-md-6 form-floating">
+        <div class="col-xs-12 col-sm-6 col-md-6 form-floating">
           <input type="number" class="form-control" id="user-age" placeholder="User age" min="1">
           <label for="user-age">User age</label>
         </div>
@@ -27,12 +27,11 @@
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success">Guardar</button>
       </div>
-
     </form>
-    <section>
-      <h2>Users list</h2>
-      <table class="table table-striped table-hover table-bordered text-center">
-        <thead>
+    <section class="table-responsive table-responsive-sm ">
+      <table class="table table-sm caption-top align-middle table-striped table-hover table-bordered text-center">
+        <caption>List of users</caption>
+        <thead >
           <tr>
             <th>#</th>
             <th>name</th>
