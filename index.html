@@ -13,15 +13,15 @@
     <h1 class="text-center">Crud with Json Server</h1>
   </header>
   <main class="container-fluid">
-    <form id="form" method="post">
+    <form id="form" class="needs-validation" novalidate>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 form-floating ">
-          <input type="text" class="form-control" id="user-name" placeholder="User name">
-          <label for="user-name">User name</label>
+          <input type="text" class="form-control" id="user-name" required placeholder="User name">
+          <label for="user-name" class="form-label">User name</label>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 form-floating ">
-          <input type="number" class="form-control" id="user-age" placeholder="User age" min="1">
-          <label for="user-age">User age</label>
+          <input type="number" class="form-control" id="user-age" required class="form-control" placeholder="User age" min="1">
+          <label for="user-age" class="form-label">User age</label>
         </div>
       </div>
       <div class="d-flex justify-content-center pt-2">
@@ -44,6 +44,7 @@
     </section>
   </main>
   <footer></footer>
+  <script type="module" src="./src/js/validation.js"></script>
   <script type="module" src="./src/js/main.js"></script>
 </body>
 

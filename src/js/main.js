@@ -13,13 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 form.addEventListener("submit", (event) => {
-    event.preventDefault()
-    if (userCache === undefined) {
-        saveUser()
-    } else {
-        updateUser(userCache)
+    if (!form.checkValidity()) {
+        event.preventDefault()
+    }else{
+        event.preventDefault()
+        if (userCache === undefined) {
+            saveUser()
+        } else {
+            updateUser(userCache)
+        }
     }
-
 })
 
 tbody.addEventListener('click', (event) => {
