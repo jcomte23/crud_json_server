@@ -4,7 +4,6 @@ import * as bootstrap from 'bootstrap'
 const URLBASE = "http://localhost:3000"
 const nameUser = document.getElementById("user-name")
 const userAge = document.getElementById("user-age")
-const userId = document.getElementById("user-id")
 const form = document.getElementById("form")
 const tbody = document.getElementById("tbody")
 let userCache
@@ -42,19 +41,15 @@ async function saveUser() {
         age: userAge.value
     }
 
-    const response = await fetch(`${URLBASE}/users`, {
+    await fetch(`${URLBASE}/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            name: nameUser.value,
-            age: userAge.value,
-        })
+        body: JSON.stringify(user)
     })
-
-    const data = await response.json()
-    renderUsers(data)
+    form.reset()
+    getUsers()
 }
 
 async function updateUser(id) {
@@ -70,8 +65,8 @@ async function updateUser(id) {
         },
         body: JSON.stringify(user)
     })
-
     userCache = undefined
+    getUsers()
 }
 
 async function getUsers() {
@@ -81,12 +76,13 @@ async function getUsers() {
 }
 
 async function deleteUser(id) {
-    const response = await fetch(`${URLBASE}/users/${id}`, {
+    await fetch(`${URLBASE}/users/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
     })
+    getUsers()
 }
 
 function renderUsers(data) {
