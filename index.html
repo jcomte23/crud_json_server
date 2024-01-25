@@ -1,16 +1,49 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <title>CRUD JWS</title>
-  </head>
-  <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Vite!</h1>
-      <button class="btn btn-primary">Primary button</button>
-    </div>
-    <script type="module" src="./src/js/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <title>CRUD JWS</title>
+</head>
+
+<body class="container-fluid">
+  <header>
+    <h1>Crud with Json Server</h1>
+  </header>
+  <main>
+    <form id="form" action="" method="post">
+      <input type="hidden" id="user-id">
+      <div class="form-floating mt-5 mb-3">
+        <input type="text" class="form-control" id="user-name" placeholder="User name">
+        <label for="user-name">User name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="user-age" placeholder="User age" min="1">
+        <label for="user-age">User age</label>
+      </div>
+      <button type="submit" class="btn btn-success w-100">Guardar</button>
+    </form>
+    <section>
+      <h2>Users list</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>age</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer></footer>
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+
 </html>
