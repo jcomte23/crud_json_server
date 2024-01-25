@@ -67,6 +67,7 @@ async function updateUser(id) {
     })
     userCache = undefined
     getUsers()
+    form.reset()
 }
 
 async function getUsers() {
