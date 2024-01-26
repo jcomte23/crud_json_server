@@ -1,3 +1,18 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "5763",
+      "userName": "Wendy",
+      "birthDate": "2024-01-09",
+      "email": "javiercombita2014@gmail.com",
+      "password": "Combita2364+"
+    },
+    {
+      "id": "396f",
+      "userName": "Wendy",
+      "birthDate": "2024-01-04",
+      "email": "jcomte23@outlook.com",
+      "password": "Combita2364+"
+    }
+  ]
 }
