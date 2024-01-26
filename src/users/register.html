@@ -77,8 +77,8 @@
         </ul>
     </div>
 
-    <main class="form-signin  m-auto text-center">
-        <form>
+    <main class="form-signin m-auto text-center">
+        <form id="form">
             <figure>
                 <img class="mb-4 w-50 h-auto" src="https://i.imgur.com/dc8NIoP.png" alt="logo secure software"
                     width="200" height="200">
@@ -94,12 +94,16 @@
             </div>
 
             <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Confirm password">
+                <input type="password" class="form-control" id="password-confirm" placeholder="Confirm password">
                 <label for="password">Password</label>
             </div>
 
             <button class="btn btn-primary w-100 py-2 mt-5" type="submit">Sign Up</button>
         </form>
+        <div class="mt-2">
+            <h5>Are you registered? <span class="badge bg-secondary"><a href="/" class="text-white text-decoration-none">Sign in</a></span></h5>
+        </div>
+        
     </main>
 
     <script type="module" src="../js/login_register.js"></script>
