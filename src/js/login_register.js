@@ -15,9 +15,10 @@ form.addEventListener("submit", (event) => {
 
 function registerUser() {
     const { validated, message } = validatePassword()
-
     if (validated) {
         saveUser()
+    } else {
+        alert(message)
     }
 }
 
@@ -28,15 +29,14 @@ function validatePassword() {
             message: "the passwords do not match"
         }
     }
-
     return { validated: true }
 }
 
 
 async function saveUser() {
     const user = {
-        userName:userName.value,
-        birthDate:birthDate.value,
+        userName: userName.value,
+        birthDate: birthDate.value,
         email: email.value,
         password: password.value
     }
@@ -50,8 +50,12 @@ async function saveUser() {
     })
 
     console.log(response);
+    if (response.ok && response.status == 201) {
+        form.reset()
+        form.classList.remove("was-validated");
+        alert("se guardo")
+    }
 
-    form.reset()
-    form.classList.remove("was-validated");
-    alert("se guardo")
+
+
 }
