@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <title>users</title>
+</head>
+
+<body>
+  <header class="container-fluid">
+    <h1 class="text-center">Crud with Json Server</h1>
+  </header>
+  <main class="container-fluid">
+    <form id="form" class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 form-floating ">
+          <input type="text" class="form-control" id="user-name" required placeholder="User name">
+          <label for="user-name" class="form-label">User name</label>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 form-floating ">
+          <input type="number" class="form-control" id="user-age" required class="form-control" placeholder="User age" min="1">
+          <label for="user-age" class="form-label">User age</label>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center pt-2">
+        <button type="submit" class="btn btn-success">Guardar</button>
+      </div>
+    </form>
+    <section class="table-responsive table-responsive-sm ">
+      <table class="table table-sm caption-top align-middle table-striped table-hover table-bordered text-center">
+        <caption>List of users</caption>
+        <thead >
+          <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>age</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </section>
+  </main>
+  <footer></footer>
+  <script type="module" src="../js/validation.js"></script>
+  <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>
