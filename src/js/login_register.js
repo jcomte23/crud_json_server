@@ -13,7 +13,7 @@ form.addEventListener("submit", (event) => {
         event.preventDefault()
     }else{
         event.preventDefault()
-    registerUser()
+        registerUser()
     }
     
 })
