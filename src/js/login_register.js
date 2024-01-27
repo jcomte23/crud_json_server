@@ -10,15 +10,12 @@ const password = document.getElementById("password")
 const passwordConfirm = document.getElementById("password-confirm")
 
 form.addEventListener("submit", (event) => {
-    
-    registerUser()
-    // if (!form.checkValidity()) {
-    //     event.preventDefault()
-    // } else {
-    //     event.preventDefault()
-    //     registerUser()
-    // }
-
+    if (!form.checkValidity()) {
+        event.preventDefault()
+    } else {
+        event.preventDefault()
+        registerUser()
+    }
 })
 
 function registerUser() {
@@ -26,7 +23,15 @@ function registerUser() {
     if (validated) {
         saveUser()
     } else {
-        alert(message)
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: `${message}`,
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
     }
 }
 
@@ -57,15 +62,21 @@ async function saveUser() {
         body: JSON.stringify(user)
     })
 
-
     if (response.ok && response.status == 201) {
         form.reset()
-        form.classList.remove("was-validated");
+        form.classList.remove("was-validated");     
         Swal.fire({
             title: `🌐Welcome ${user.userName}! 🚀`,
             icon: "success",
             showConfirmButton: false,
             timer: 1000
         })
+    }else{
+        Swal.fire({
+            icon: "error",
+            title: "Ups",
+            text: `${response.statusText}`,
+            confirmButtonColor: "#0d6efd",
+          });
     }
 }
