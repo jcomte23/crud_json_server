@@ -9,8 +9,13 @@ const password = document.getElementById("password")
 const passwordConfirm = document.getElementById("password-confirm")
 
 form.addEventListener("submit", (event) => {
-    event.preventDefault()
+    if (!form.checkValidity()) {
+        event.preventDefault()
+    }else{
+        event.preventDefault()
     registerUser()
+    }
+    
 })
 
 function registerUser() {
@@ -49,7 +54,7 @@ async function saveUser() {
         body: JSON.stringify(user)
     })
 
-    console.log(response);
+
     if (response.ok && response.status == 201) {
         form.reset()
         form.classList.remove("was-validated");
