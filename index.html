@@ -78,18 +78,18 @@
   </div>
 
   <main class="form-signin  m-auto text-center">
-    <form id="form">
+    <form id="form" class="needs-validation" novalidate>
       <figure>
         <img class="mb-4 w-50 h-auto" src="https://i.imgur.com/dc8NIoP.png" alt="logo secure software" width="200" height="200">
       </figure>
       <h1 class="h3 mb-3 fw-normal">JSON WEB SERVER</h1>
 
       <div class="form-floating my-1">
-        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
         <label for="email">Email address</label>
       </div>
       <div class="form-floating my-1">
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input type="password" class="form-control" id="password" placeholder="Password" required>
         <label for="password">Password</label>
       </div>
 
@@ -100,6 +100,7 @@
   </div>
   </main>
 
+  <script type="module" src="../js/validation.js"></script>
   <script type="module" src="./src/js/login_register.js"></script>
 </body>
 
