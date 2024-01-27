@@ -18,6 +18,42 @@ form.addEventListener("submit", (event) => {
 
 
 function loginUser() {
-    console.log(email.value);
-    console.log(password.value);
+
+    switch (password.value) {
+        case "1":
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "success",
+                title: `Success`,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+            break;
+        case "2":
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "error",
+                title: `incorrect password`,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+        case "3":
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "error",
+                title: `User was not found`,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+            break;
+
+        default:
+            break;
+    }
 }
