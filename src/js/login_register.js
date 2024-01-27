@@ -1,4 +1,5 @@
 import '../scss/login_register.scss'
+import Swal from 'sweetalert2'
 import * as bootstrap from 'bootstrap'
 
 const form = document.getElementById("form")
@@ -9,13 +10,15 @@ const password = document.getElementById("password")
 const passwordConfirm = document.getElementById("password-confirm")
 
 form.addEventListener("submit", (event) => {
-    if (!form.checkValidity()) {
-        event.preventDefault()
-    }else{
-        event.preventDefault()
-        registerUser()
-    }
     
+    registerUser()
+    // if (!form.checkValidity()) {
+    //     event.preventDefault()
+    // } else {
+    //     event.preventDefault()
+    //     registerUser()
+    // }
+
 })
 
 function registerUser() {
@@ -58,9 +61,11 @@ async function saveUser() {
     if (response.ok && response.status == 201) {
         form.reset()
         form.classList.remove("was-validated");
-        alert("se guardo")
+        Swal.fire({
+            title: `🌐Welcome ${user.userName}! 🚀`,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000
+        })
     }
-
-
-
 }
