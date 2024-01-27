@@ -45,7 +45,6 @@ function validatePassword() {
     return { validated: true }
 }
 
-
 async function saveUser() {
     const user = {
         userName: userName.value,
@@ -80,3 +79,4 @@ async function saveUser() {
           });
     }
 }
+
