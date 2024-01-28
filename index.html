@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -29,7 +29,7 @@
     </symbol>
   </svg>
 
-  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <div class="dropdown position-fixed top-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -39,8 +39,8 @@
     </button>
     <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
       <li>
-        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-          aria-pressed="false">
+        <button type="button" id="theme-light" class="dropdown-item d-flex align-items-center"
+          data-bs-theme-value="light" aria-pressed="false">
           <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
             <use href="#sun-fill"></use>
           </svg>
@@ -51,24 +51,12 @@
         </button>
       </li>
       <li>
-        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+        <button type="button" id="theme-dark" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
           aria-pressed="false">
           <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
             <use href="#moon-stars-fill"></use>
           </svg>
           Dark
-          <svg class="bi ms-auto d-none" width="1em" height="1em">
-            <use href="#check2"></use>
-          </svg>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-          aria-pressed="true">
-          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-            <use href="#circle-half"></use>
-          </svg>
-          Auto
           <svg class="bi ms-auto d-none" width="1em" height="1em">
             <use href="#check2"></use>
           </svg>
@@ -80,7 +68,8 @@
   <main class="form-signin m-3 text-center">
     <form id="form" class="needs-validation" novalidate>
       <figure>
-        <img class="mb-1 w-25 h-auto" src="https://i.imgur.com/dc8NIoP.png" alt="logo secure software" width="200" height="200">
+        <img class="mb-1 w-25 h-auto" src="https://i.imgur.com/dc8NIoP.png" alt="logo secure software" width="200"
+          height="200">
       </figure>
       <h1 class="h3 mb-3 fw-normal">JSON WEB SERVER</h1>
 
@@ -96,12 +85,14 @@
       <button class="btn btn-primary w-100 py-2 mt-5" type="submit">Sign in</button>
     </form>
     <div class="mt-2">
-      <h5>Do you have an account? <span class="badge bg-secondary"><a href="./src/users/register.html" class="text-white text-decoration-none">Sign up</a></span></h5>
-  </div>
+      <h5>Do you have an account? <span class="badge bg-secondary"><a href="./src/users/register.html"
+            class="text-white text-decoration-none">Sign up</a></span></h5>
+    </div>
   </main>
 
   <script type="module" src="./src/js/validation.js"></script>
   <script type="module" src="./src/js/login.js"></script>
+  <script type="module" src="./src/js/themes.js"></script>
 </body>
 
 </html>
