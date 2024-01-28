@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('jws_theme', "light");
     })
 
-    btnDark.addEventListener("click",(event) => {
+    btnDark.addEventListener("click",() => {
         document.documentElement.setAttribute('data-bs-theme', "dark");
         localStorage.setItem('jws_theme', "dark");
     })

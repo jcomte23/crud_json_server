@@ -1,8 +1,8 @@
 export function createDropdownTheme() {
     document.addEventListener('DOMContentLoaded', function () {
-        const bodyElement = document.body;
-        const header=document.createElement("header")
-        header.innerHTML = `
+        const headerElement = document.querySelector('header');
+        const div=document.createElement("div")
+        div.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
             <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -59,6 +59,6 @@ export function createDropdownTheme() {
             </ul>
         </div>
         `;
-        bodyElement.insertBefore(header,bodyElement.firstChild);
+        headerElement.appendChild(div);
     });
 }
