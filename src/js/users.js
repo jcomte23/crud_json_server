@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 form.addEventListener("submit", (event) => {
     if (!form.checkValidity()) {
         event.preventDefault()
-    }else{
+    } else {
         event.preventDefault()
         if (userCache === undefined) {
             saveUser()
@@ -96,11 +96,16 @@ async function deleteUser(id) {
 function renderUsers(data) {
     cleanTbody()
     data.forEach((element, index) => {
+        const dateNow = new Date()
+        const birthDate = new Date(element.birthDate)
+        const ageInMilliseconds = dateNow - birthDate.getTime();
+        const ageInYears = new Date(ageInMilliseconds).getFullYear() - 1970;
         tbody.innerHTML += `
         <tr>
             <th scope="row">${index + 1}</th>
-            <td>${element.name}</td>
-            <td>${element.age}</td>
+            <td>${element.userName}</td>
+            <td>${ageInYears} years</td>
+            <td>${element.email}</td>
             <td>
                 <button type="button" class="btn btn-primary" data-id="${element.id}">Edit</button>
                 <button type="button" class="btn btn-danger" data-id="${element.id}">Delete</button>
