@@ -1,7 +1,6 @@
 import '../scss/style.scss'
 import * as bootstrap from 'bootstrap'
 
-
 const URLBASE = "http://localhost:3000"
 const nameUser = document.getElementById("user-name")
 const userAge = document.getElementById("user-age")

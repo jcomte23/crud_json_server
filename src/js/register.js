@@ -1,6 +1,9 @@
 import '../scss/login_register.scss'
 import Swal from 'sweetalert2'
 import * as bootstrap from 'bootstrap'
+import { createDropdownTheme } from '../components/dropdown_theme'
+
+createDropdownTheme()
 
 const form = document.getElementById("form")
 const userName = document.getElementById("user-name")
