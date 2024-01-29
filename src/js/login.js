@@ -2,6 +2,7 @@ import '../scss/login_register.scss'
 import Swal from 'sweetalert2'
 import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
+import bcryptjs from 'bcryptjs'
 
 createDropdownTheme()
 const URLSERVER = "http://localhost:3000"
@@ -16,7 +17,7 @@ form.addEventListener("submit", async (event) => {
     } else {
         event.preventDefault()
         const { validatedEmail, messageEmail } = await validateEmailInDatabase()
-        if (validatedEmail && (messageEmail === password.value)) {
+        if (validatedEmail && (bcryptjs.compareSync(password.value,messageEmail))) {
             loginUser()
         } else {
             if (validatedEmail === false) {

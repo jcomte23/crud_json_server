@@ -2,6 +2,7 @@ import '../scss/login_register.scss'
 import Swal from 'sweetalert2'
 import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
+import bcryptjs from 'bcryptjs'
 
 createDropdownTheme()
 const URLSERVER = "http://localhost:3000"
@@ -25,7 +26,7 @@ async function registerUser() {
     const { validatedMatch, messageMatch } = validatePasswordMatch()
     const { validatedSecurity, messageSecurity } = validatePasswordSecurity()
     const { validatedEmail, messageEmail } = await validateEmailInDatabase(email.value)
-    if (validatedMatch && validatedSecurity &&  validatedEmail) {
+    if (validatedMatch && validatedSecurity && validatedEmail) {
         saveUser()
     } else {
         if (validatedMatch === false) {
@@ -69,7 +70,7 @@ function validatePasswordSecurity() {
 async function validateEmailInDatabase(email) {
     const response = await fetch(`${URLSERVER}/users?email=${email}`)
     const data = await response.json()
-    if (data.length===0) {
+    if (data.length === 0) {
         return {
             validatedEmail: true,
         }
@@ -85,10 +86,10 @@ async function saveUser() {
         userName: userName.value,
         birthDate: birthDate.value,
         email: email.value,
-        password: password.value
+        password: bcryptjs.hashSync(password.value,8)
     }
 
-    const response = await fetch(URLSERVER, {
+    const response = await fetch(`${URLSERVER}/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
