@@ -4,7 +4,7 @@ import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
 
 createDropdownTheme()
-
+const URLSERVER = "http://localhost:3000"
 const form = document.getElementById("form")
 const userName = document.getElementById("user-name")
 const birthDate = document.getElementById("birth-date")
@@ -21,31 +21,63 @@ form.addEventListener("submit", (event) => {
     }
 })
 
-function registerUser() {
-    const { validated, message } = validatePassword()
-    if (validated) {
+async function registerUser() {
+    const { validatedMatch, messageMatch } = validatePasswordMatch()
+    const { validatedSecurity, messageSecurity } = validatePasswordSecurity()
+    const { validatedEmail, messageEmail } = await validateEmailInDatabase(email.value)
+    if (validatedMatch && validatedSecurity &&  validatedEmail) {
         saveUser()
     } else {
-        Swal.fire({
-            toast: true,
-            position: "top-end",
-            icon: "error",
-            title: `${message}`,
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-          });
+        if (validatedMatch === false) {
+            smallAlertError(messageMatch)
+        }
+
+        if (validatedSecurity === false) {
+            smallAlertError(messageSecurity)
+        }
+
+        if (validatedEmail === false) {
+            smallAlertError(messageEmail)
+        }
     }
 }
 
-function validatePassword() {
+function validatePasswordMatch() {
     if (password.value != passwordConfirm.value) {
+        password.classList.add("is-invalid")
         return {
-            validated: false,
-            message: "the passwords do not match"
+            validatedMatch: false,
+            messageMatch: "the passwords do not match"
         }
     }
-    return { validated: true }
+    return { validatedMatch: true }
+}
+
+function validatePasswordSecurity() {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
+    if (regex.test(password.value)) {
+        return {
+            validatedSecurity: true,
+        }
+    }
+    return {
+        validatedSecurity: false,
+        messageSecurity: "Passwords must have uppercase, lowercase, numbers and a special character"
+    }
+}
+
+async function validateEmailInDatabase(email) {
+    const response = await fetch(`${URLSERVER}/users?email=${email}`)
+    const data = await response.json()
+    if (data.length===0) {
+        return {
+            validatedEmail: true,
+        }
+    }
+    return {
+        validatedEmail: false,
+        messageEmail: "that email is already registered"
+    }
 }
 
 async function saveUser() {
@@ -56,7 +88,7 @@ async function saveUser() {
         password: password.value
     }
 
-    const response = await fetch(`http://localhost:3000/users`, {
+    const response = await fetch(URLSERVER, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -66,20 +98,32 @@ async function saveUser() {
 
     if (response.ok && response.status == 201) {
         form.reset()
-        form.classList.remove("was-validated");     
+        form.classList.remove("was-validated");
         Swal.fire({
             title: `🌐Welcome ${user.userName}! 🚀`,
             icon: "success",
             showConfirmButton: false,
             timer: 1000
         })
-    }else{
+    } else {
         Swal.fire({
             icon: "error",
             title: "Ups",
             text: `${response.statusText}`,
             confirmButtonColor: "#0d6efd",
-          });
+        });
     }
+}
+
+function smallAlertError(message) {
+    Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
+        title: `${message}`,
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+    });
 }
 
