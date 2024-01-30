@@ -1,13 +1,13 @@
 (() => {
     const isAutorizated=localStorage.getItem("isAutorizated")
     const path= window.location.pathname
-    const routeActive=path.substring(path.lastIndexOf("/"))
+    const routeActive=path.substring(path.lastIndexOf("/")+1)
     const privateRoutes=["indexUsers.html"]
 
-    if (privateRoutes.includes(routeActive) && !isAutorizated) {
-        window.location.href = "index.html"
+    console.log(isAutorizated);
+    console.log(typeof isAutorizated);
+
+    if (privateRoutes.includes(routeActive) && isAutorizated !=="true") {
+        window.location.href = "/"
     }
-    
-    console.log(window.location.host);
-    console.log(window.location.pathname);
 })()
