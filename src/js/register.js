@@ -1,7 +1,7 @@
 import '../scss/login_register.scss'
-import Swal from 'sweetalert2'
 import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
+import { smallAlertError } from './alerts'
 import bcryptjs from 'bcryptjs'
 
 createDropdownTheme()
@@ -116,15 +116,4 @@ async function saveUser() {
     }
 }
 
-function smallAlertError(message) {
-    Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "error",
-        title: `${message}`,
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-    });
-}
 

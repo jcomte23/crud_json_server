@@ -1,7 +1,7 @@
 import '../scss/login_register.scss'
-import Swal from 'sweetalert2'
 import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
+import { smallAlertError } from './alerts'
 import bcryptjs from 'bcryptjs'
 
 createDropdownTheme()
@@ -21,25 +21,9 @@ form.addEventListener("submit", async (event) => {
             loginUser()
         } else {
             if (validatedEmail === false) {
-                Swal.fire({
-                    toast: true,
-                    position: "top-end",
-                    icon: "error",
-                    title: `${messageEmail}`,
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
+                smallAlertError(messageEmail)
             } else {
-                Swal.fire({
-                    toast: true,
-                    position: "top-end",
-                    icon: "error",
-                    title: `incorrect password`,
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
+                smallAlertError("incorrect password")
             }
 
         }
@@ -61,45 +45,6 @@ async function validateEmailInDatabase() {
         validatedEmail: false,
         messageEmail: "the email does not exist"
     }
-
-
-    // switch (password.value) {
-    //     case "1":
-    //         Swal.fire({
-    //             toast: true,
-    //             position: "top-end",
-    //             icon: "success",
-    //             title: `Success`,
-    //             showConfirmButton: false,
-    //             timer: 2000,
-    //             timerProgressBar: true,
-    //         });
-    //         break;
-    //     case "2":
-    //         Swal.fire({
-    //             toast: true,
-    //             position: "top-end",
-    //             icon: "error",
-    //             title: `incorrect password`,
-    //             showConfirmButton: false,
-    //             timer: 2000,
-    //             timerProgressBar: true,
-    //         });
-    //     case "3":
-    //         Swal.fire({
-    //             toast: true,
-    //             position: "top-end",
-    //             icon: "error",
-    //             title: `User was not found`,
-    //             showConfirmButton: false,
-    //             timer: 2000,
-    //             timerProgressBar: true,
-    //         });
-    //         break;
-
-    //     default:
-    //         break;
-    // }
 }
 
 function loginUser() {
