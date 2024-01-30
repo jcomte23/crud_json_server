@@ -1,18 +1,11 @@
 {
   "users": [
     {
-      "id": "11a9",
+      "id": "33e7",
       "userName": "jcomte23",
       "birthDate": "1998-04-23",
       "email": "jcomte23@outlook.com",
-      "password": "Combita2364+"
-    },
-    {
-      "id": "542d",
-      "userName": "Sebas",
-      "birthDate": "2024-01-24",
-      "email": "sebastian@gmail.com",
-      "password": "$2a$08$wJwCrJCrIhmgQ1YguoHFYu2iEl/KffUusHV2k161HBd5Ic48pZg6."
+      "password": "$2a$08$loWLEqMhv4gxjVcj19qmbuMxm4GUe6ZrnUpTuZhE7gbLORHCCewgm"
     }
   ]
 }

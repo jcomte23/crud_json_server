@@ -17,7 +17,7 @@ form.addEventListener("submit", async (event) => {
     } else {
         event.preventDefault()
         const { validatedEmail, messageEmail } = await validateEmailInDatabase()
-        if (validatedEmail && (bcryptjs.compareSync(password.value,messageEmail))) {
+        if (validatedEmail && (bcryptjs.compareSync(password.value, messageEmail))) {
             loginUser()
         } else {
             if (validatedEmail === false) {
@@ -48,5 +48,6 @@ async function validateEmailInDatabase() {
 }
 
 function loginUser() {
-    window.location.href="src/users/index.html"
+    localStorage.setItem("isAutorizated", "true")
+    window.location.href = "src/users/indexUsers.html"
 }
