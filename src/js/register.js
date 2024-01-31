@@ -2,6 +2,7 @@ import '../scss/login_register.scss'
 import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
 import { smallAlertError } from './alerts'
+import Swal from 'sweetalert2'
 import bcryptjs from 'bcryptjs'
 
 createDropdownTheme()
@@ -83,10 +84,11 @@ async function validateEmailInDatabase(email) {
 
 async function saveUser() {
     const user = {
+        roleId: 3,
         userName: userName.value,
         birthDate: birthDate.value,
         email: email.value,
-        password: bcryptjs.hashSync(password.value,8)
+        password: bcryptjs.hashSync(password.value, 8)
     }
 
     const response = await fetch(`${URLSERVER}/users`, {
