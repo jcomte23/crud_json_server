@@ -7,6 +7,7 @@ createDropdownTheme()
 const URLBASE = "http://localhost:3000"
 const nameUser = document.getElementById("user-name")
 const userAge = document.getElementById("user-age")
+const btnSignoff = document.getElementById("sign-off")
 const form = document.getElementById("form")
 const tbody = document.getElementById("tbody")
 let userCache
@@ -120,3 +121,9 @@ function cleanTbody() {
         tbody.removeChild(tbody.firstChild)
     }
 }
+
+
+btnSignoff.addEventListener("click",() => {
+    localStorage.setItem("isAutorizated", "false")
+    window.location.reload(true)
+})
