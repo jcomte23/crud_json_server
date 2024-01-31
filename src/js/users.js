@@ -12,6 +12,7 @@ const birthDate = document.getElementById("birth-date")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const btnSignoff = document.getElementById("sign-off")
+const btnCloseModal = document.getElementById("btn-close-modal")
 const form = document.getElementById("form")
 const tbody = document.getElementById("tbody")
 let userCache
@@ -61,8 +62,6 @@ async function saveUser() {
         password: bcryptjs.hashSync(password.value,8)
     }
 
-    console.table(user)
-
     await fetch(`${URLBASE}/users`, {
         method: "POST",
         headers: {
@@ -70,8 +69,10 @@ async function saveUser() {
         },
         body: JSON.stringify(user)
     })
-    form.reset()
+    
     form.classList.remove("was-validated");
+    form.reset()
+    btnCloseModal.click()
     getUsers()
 }
 
@@ -94,7 +95,7 @@ async function updateUser(id) {
 }
 
 async function getUsers() {
-    const response = await fetch(`${URLBASE}/users`)
+    const response = await fetch(`${URLBASE}/users?_embed=role`)
     const data = await response.json()
     renderUsers(data)
 }
@@ -125,6 +126,7 @@ function renderUsers(data) {
         tbody.innerHTML += `
         <tr>
             <th scope="row">${index + 1}</th>
+            <td>${element.role.name}</td>
             <td>${element.userName}</td>
             <td>${ageInYears} years</td>
             <td>${element.email}</td>

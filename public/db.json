@@ -21,6 +21,22 @@
       "birthDate": "1998-04-23",
       "email": "jcomte23@outlook.com",
       "password": "$2a$08$xy8AyX3A8PhQ6RHlOSiBwuOLa2cXkvUTJKBda13dg5xbMBWHl2sqi"
+    },
+    {
+      "id": "429b",
+      "roleId": "2",
+      "userName": "Darwing",
+      "birthDate": "1999-09-25",
+      "email": "darwing@outlook.com",
+      "password": "$2a$08$iz5dTrZnYlyOAbCAX/RwFepNivjzcMOOB8Hfd8zivxvsVORLEnqG."
+    },
+    {
+      "id": "a80b",
+      "roleId": "1",
+      "userName": "Manuela",
+      "birthDate": "1998-07-14",
+      "email": "manuela2364@gmail.com",
+      "password": "$2a$08$bOPAynxmjb2EIH6tmVkvA.7mlLdR2m25wpMUIA3piqhFqnflCWGnG"
     }
   ]
 }
