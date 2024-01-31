@@ -1,11 +1,11 @@
 {
   "roles": [
     {
-      "id": 1,
+      "id": "1",
       "name": "admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "trainer"
     },
     {
@@ -13,5 +13,14 @@
       "name": "coder"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": "3c53",
+      "roleId": "3",
+      "userName": "jcomte23",
+      "birthDate": "1998-04-23",
+      "email": "jcomte23@outlook.com",
+      "password": "$2a$08$xy8AyX3A8PhQ6RHlOSiBwuOLa2cXkvUTJKBda13dg5xbMBWHl2sqi"
+    }
+  ]
 }

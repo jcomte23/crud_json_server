@@ -84,7 +84,7 @@ async function validateEmailInDatabase(email) {
 
 async function saveUser() {
     const user = {
-        roleId: 3,
+        roleId: "3",
         userName: userName.value,
         birthDate: birthDate.value,
         email: email.value,
