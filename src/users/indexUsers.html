@@ -23,30 +23,37 @@
         </div>
         <div class="modal-body">
           <form id="form" class="needs-validation" novalidate>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="user-name" placeholder="User Name" required>
-                <label for="user-name">User Name</label>
+            <div class="position-relative">
+              <select class="form-select" id="rol" required="">
+                <option selected="" disabled="" value="">Rol</option>
+                <!-- <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option> -->
+              </select>
             </div>
             <div class="form-floating my-2">
-                <input type="date" class="form-control" id="birth-date" placeholder="name@example.com" required>
-                <label for="birth-date">Birth date</label>
+              <input type="text" class="form-control" id="user-name" placeholder="User Name" required>
+              <label for="user-name">User Name</label>
             </div>
             <div class="form-floating my-2">
-                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-                <label for="email">Email address</label>
+              <input type="date" class="form-control" id="birth-date" placeholder="name@example.com" required>
+              <label for="birth-date">Birth date</label>
             </div>
             <div class="form-floating my-2">
-                <input type="password" class="form-control" id="password" placeholder="Password" required>
-                <label for="password">Password</label>
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+              <label for="email">Email address</label>
+            </div>
+            <div class="form-floating my-2">
+              <input type="password" class="form-control" id="password" placeholder="Password" required>
+              <label for="password">Password</label>
             </div>
 
             <div class="form-floating">
-                <input type="password" class="form-control" id="password-confirm" placeholder="Confirm password"
-                    required>
-                <label for="password">Password</label>
+              <input type="password" class="form-control" id="password-confirm" placeholder="Confirm password" required>
+              <label for="password">Password</label>
             </div>
             <button class="btn btn-primary w-100 py-2 mt-5" type="submit">Save</button>
-        </form>
+          </form>
         </div>
       </div>
     </div>

@@ -1,18 +1,23 @@
 import '../scss/style.scss'
 import * as bootstrap from 'bootstrap'
 import { createDropdownTheme } from '../components/dropdown_theme'
+import bcryptjs from 'bcryptjs'
 
 createDropdownTheme()
 
 const URLBASE = "http://localhost:3000"
+const rol = document.getElementById("rol")
 const nameUser = document.getElementById("user-name")
-const userAge = document.getElementById("user-age")
+const birthDate = document.getElementById("birth-date")
+const email = document.getElementById("email")
+const password = document.getElementById("password")
 const btnSignoff = document.getElementById("sign-off")
 const form = document.getElementById("form")
 const tbody = document.getElementById("tbody")
 let userCache
 
 document.addEventListener("DOMContentLoaded", () => {
+    getRoles() 
     getUsers()
 })
 
@@ -42,11 +47,21 @@ tbody.addEventListener('click', (event) => {
     }
 })
 
+btnSignoff.addEventListener("click", () => {
+    localStorage.setItem("isAutorizated", "false")
+    window.location.reload(true)
+})
+
 async function saveUser() {
     const user = {
-        name: nameUser.value,
-        age: userAge.value
+        roleId: rol.value,
+        userName: nameUser.value,
+        birthDate: birthDate.value,
+        email: email.value,
+        password: bcryptjs.hashSync(password.value,8)
     }
+
+    console.table(user)
 
     await fetch(`${URLBASE}/users`, {
         method: "POST",
@@ -84,6 +99,12 @@ async function getUsers() {
     renderUsers(data)
 }
 
+async function getRoles() {
+    const response = await fetch(`${URLBASE}/roles`)
+    const data = await response.json()
+    renderRoles(data)
+}
+
 async function deleteUser(id) {
     await fetch(`${URLBASE}/users/${id}`, {
         method: "DELETE",
@@ -116,14 +137,18 @@ function renderUsers(data) {
     });
 }
 
+function renderRoles(data) {    
+    data.forEach(element => {
+        const option=document.createElement("option")
+        option.value=element.id
+        option.textContent=element.name
+        rol.appendChild(option)
+    });
+}
+
 function cleanTbody() {
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild)
     }
 }
 
-
-btnSignoff.addEventListener("click",() => {
-    localStorage.setItem("isAutorizated", "false")
-    window.location.reload(true)
-})
