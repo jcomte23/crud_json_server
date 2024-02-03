@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-1. **Clonar el Repositorio:**
+1. **Clone the Repository:**
    ```bash
    git clone https://github.com/jcomte23/crud_json_server.git
    ```
@@ -31,7 +31,7 @@
    npx json-server db.json
    ```
 
-4. **Run the development server:**
+5. **Run the development server:**
    ```bash
    npm run dev
    ```
